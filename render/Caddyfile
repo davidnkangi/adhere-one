@@ -1,0 +1,22 @@
+# Single public entry point, as in upstream's compose setup: /api -> backend, everything else -> frontend.
+# Render terminates TLS, so Caddy listens on plain HTTP on $PORT and must tell the apps the
+# original scheme and host (they use these headers for CSRF and redirects).
+{
+	auto_https off
+	admin off
+}
+
+:{$PORT} {
+	handle /api/* {
+		reverse_proxy {$BACKEND_ADDR} {
+			header_up X-Forwarded-Proto https
+			header_up X-Forwarded-Host {http.request.host}
+		}
+	}
+	handle {
+		reverse_proxy {$FRONTEND_ADDR} {
+			header_up X-Forwarded-Proto https
+			header_up X-Forwarded-Host {http.request.host}
+		}
+	}
+}

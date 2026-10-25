@@ -28,6 +28,13 @@ GUNICORN_KEEPALIVE=${GUNICORN_KEEPALIVE:-30}
 GUNICORN_LIMIT_REQUEST_LINE=${GUNICORN_LIMIT_REQUEST_LINE:-5120}
 GUNICORN_PORT=${PORT:-8000}
 
+# AdhereOne: optionally run the Huey task worker inside this container (RUN_HUEY=true).
+# Upstream shares the SQLite queue file between two containers through ./db; Render services
+# cannot share a filesystem, so on Render the worker runs next to the API instead.
+if [ "${RUN_HUEY:-false}" = "true" ]; then
+  python manage.py run_huey -w "${HUEY_WORKERS:-2}" --scheduler-interval 60 &
+fi
+
 exec gunicorn --chdir ciso_assistant \
   --bind :$GUNICORN_PORT \
   --timeout $GUNICORN_TIMEOUT \

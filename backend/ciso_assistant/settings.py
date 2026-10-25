@@ -758,6 +758,17 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 SQLITE_FILE = os.environ.get("SQLITE_FILE", BASE_DIR / "db/ciso-assistant.sqlite3")
 LIBRARIES_PATH = library_path = BASE_DIR / "library/libraries"
 
+# AdhereOne: accept a single DATABASE_URL (Render style) as an alternative to the POSTGRES_* variables.
+if "DATABASE_URL" in os.environ and "POSTGRES_NAME" not in os.environ:
+    from urllib.parse import unquote, urlparse
+
+    _db_url = urlparse(os.environ["DATABASE_URL"])
+    os.environ["POSTGRES_NAME"] = _db_url.path.lstrip("/")
+    os.environ["POSTGRES_USER"] = unquote(_db_url.username or "")
+    os.environ["POSTGRES_PASSWORD"] = unquote(_db_url.password or "")
+    os.environ["DB_HOST"] = _db_url.hostname or "localhost"
+    os.environ["DB_PORT"] = str(_db_url.port or 5432)
+
 if "POSTGRES_NAME" in os.environ:
     DATABASES = {
         "default": {

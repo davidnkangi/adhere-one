@@ -1,0 +1,86 @@
+# AdhereOne on Render: one stack = Caddy (public) -> frontend + backend (private) -> Postgres.
+# Images are built by GitHub Actions (.github/workflows/adhere-images.yml) and pulled from GHCR,
+# because the upstream frontend build needs far more memory than a typical build machine.
+# Edit the host name below (app.adheresystems.com) before the first sync.
+# NOTE: if this workspace will hold PHI, it must be a HIPAA-enabled workspace first (see render/README.md).
+
+databases:
+  - name: adhereone-db
+    plan: 0.5c-1g
+    region: oregon
+    databaseName: adhereone
+    user: adhereone
+    ipAllowList: [] # private network only
+
+services:
+  # Public entry point. Routes /api/* to the backend and everything else to the frontend.
+  - type: web
+    runtime: docker
+    name: adhereone
+    region: oregon
+    plan: 0.5c-512mb
+    dockerfilePath: ./render/Dockerfile.caddy
+    dockerContext: .
+    autoDeployTrigger: commit
+    envVars:
+      - key: BACKEND_ADDR
+        value: adhereone-backend:8000
+      - key: FRONTEND_ADDR
+        value: adhereone-frontend:3000
+
+  - type: pserv
+    runtime: image
+    name: adhereone-backend
+    region: oregon
+    plan: 1c-2g
+    image:
+      url: ghcr.io/davidnkangi/adhere-one/backend:latest
+    envVars:
+      - key: PORT
+        value: "8000"
+      - key: DJANGO_DEBUG
+        value: "False"
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: adhereone-db
+          property: connectionString
+      - key: CISO_ASSISTANT_URL
+        value: https://app.adheresystems.com
+      - key: ALLOWED_HOSTS
+        value: app.adheresystems.com,adhereone-backend,localhost
+      - key: GUNICORN_WORKERS
+        value: "2"
+      # Runs the Huey task worker inside this container (see backend/startup.sh).
+      - key: RUN_HUEY
+        value: "true"
+      # First administrator, created on first start. Enter these in the Render dashboard.
+      - key: DJANGO_SUPERUSER_EMAIL
+        sync: false
+      - key: DJANGO_SUPERUSER_PASSWORD
+        sync: false
+      # Evidence files. Render disks are lost on redeploy unless a disk is attached, so switch to S3
+      # before storing real evidence: set USE_S3=True and add AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY,
+      # AWS_STORAGE_BUCKET_NAME and AWS_S3_REGION_NAME in the dashboard.
+      - key: USE_S3
+        value: "False"
+
+  - type: pserv
+    runtime: image
+    name: adhereone-frontend
+    region: oregon
+    plan: 0.5c-512mb
+    image:
+      url: ghcr.io/davidnkangi/adhere-one/frontend:latest
+    envVars:
+      - key: PORT
+        value: "3000"
+      - key: PUBLIC_BACKEND_API_URL
+        value: http://adhereone-backend:8000/api
+      - key: PUBLIC_BACKEND_API_EXPOSED_URL
+        value: https://app.adheresystems.com/api
+      - key: PROTOCOL_HEADER
+        value: x-forwarded-proto
+      - key: HOST_HEADER
+        value: x-forwarded-host

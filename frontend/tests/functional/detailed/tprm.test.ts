@@ -182,7 +182,7 @@ test('user can create representatives, solutions and entity assessments inside e
 test('third-party representative can set their password', async ({ sideBar, mailer, page }) => {
 	test.slow();
 	await test.step('set password and log in as third party representative', async () => {
-		const welcomeMail = await mailer.getEmailBySubject('Welcome to CISO Assistant!');
+		const welcomeMail = await mailer.getEmailBySubject('Welcome to AdhereOne!');
 		await welcomeMail.hasWelcomeEmailDetails();
 		await welcomeMail.hasEmailRecipient('third-party@tests.com');
 
@@ -209,7 +209,7 @@ test('third-party representative can set their password', async ({ sideBar, mail
 		}
 
 		const passwordSetToast = setLoginPage.isToastVisible(
-			'Your password has been successfully set. Welcome to CISO Assistant!',
+			'Your password has been successfully set. Welcome to AdhereOne!',
 			undefined,
 			{ optional: true }
 		);

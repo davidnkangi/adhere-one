@@ -387,8 +387,8 @@ def send_test(
             alias = getattr(backend, "alias", None)
             backend_name = type(backend).__name__
             send(
-                "CISO Assistant test email",
-                f"This is a test email from CISO Assistant ({settings.CISO_ASSISTANT_URL}).\n"
+                "AdhereOne test email",
+                f"This is a test email from AdhereOne ({settings.CISO_ASSISTANT_URL}).\n"
                 f"Sent on {now} through mailer '{alias}' ({backend_name}).\n"
                 "If you received it, outgoing mail is configured correctly.",
                 recipient,

@@ -809,9 +809,9 @@ PASSWORD_HASHERS = [
 ]
 
 SPECTACULAR_SETTINGS = {
-    "TITLE": "CISO Assistant API",
+    "TITLE": "AdhereOne API",
     "DESCRIPTION": (
-        "Automate your GRC work with the CISO Assistant REST API.\n\n"
+        "Automate your GRC work with the AdhereOne REST API.\n\n"
         "- **Authentication**: send a personal access token, created from your "
         "user profile, as `Authorization: Token <PAT>`.\n"
         "- **Pagination**: list endpoints take `limit` and `offset`.\n"

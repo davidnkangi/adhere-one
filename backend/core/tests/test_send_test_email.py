@@ -34,7 +34,7 @@ def test_send_test_reports_the_mailer_that_delivered(settings):
     assert "through mailer default" in result.summary
     assert len(mail.outbox) == 1
     assert mail.outbox[0].to == ["admin@tests.local"]
-    assert mail.outbox[0].subject == "CISO Assistant test email"
+    assert mail.outbox[0].subject == "AdhereOne test email"
     assert "mailer 'default'" in mail.outbox[0].body
 
 

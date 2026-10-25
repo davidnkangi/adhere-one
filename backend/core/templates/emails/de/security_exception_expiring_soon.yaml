@@ -1,4 +1,4 @@
-subject: "CISO Assistant: Ausnahmen laufen in ${days_remaining} ${days_remaining_unit} ab"
+subject: "AdhereOne: Ausnahmen laufen in ${days_remaining} ${days_remaining_unit} ab"
 body: |
   Hallo,
 
@@ -6,6 +6,6 @@ body: |
 
   ${exception_list}
 
-  Melden Sie sich in Ihrem CISO-Assistant-Portal an, um diese Ausnahmen zu prüfen und zu aktualisieren: [CISO Assistant öffnen](${ciso_assistant_url})
+  Melden Sie sich in Ihrem AdhereOne-Portal an, um diese Ausnahmen zu prüfen und zu aktualisieren: [AdhereOne öffnen](${ciso_assistant_url})
 
   Vielen Dank.

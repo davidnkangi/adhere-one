@@ -98,7 +98,7 @@ def test_german_assignment_reviewed_subject_localizes_decision():
     )
 
     assert subject == (
-        "CISO Assistant: Ihre Aufgabe für 'ISO 27001' wurde zur Überarbeitung "
+        "AdhereOne: Ihre Aufgabe für 'ISO 27001' wurde zur Überarbeitung "
         "zurückgegeben"
     )
 

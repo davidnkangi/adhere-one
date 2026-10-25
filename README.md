@@ -1,3 +1,14 @@
+# AdhereOne
+
+AdhereOne is Adhere Systems' compliance platform. It is a rebranded fork of
+[CISO Assistant Community Edition](https://github.com/intuitem/ciso-assistant-community) by intuitem,
+used under the GNU Affero General Public License v3.0. See `LICENSE.md` and `LICENSE-AGPL.txt`.
+The `enterprise/` directory is intuitem commercial code and is not licensed for use here.
+
+Rebrand scope and rules: `ADHERE-REBRAND.md`. Brand assets: `branding/`.
+
+---
+
 <p align="center">
 Star the project 🌟 to get releases notification and help growing the community!
 </p>

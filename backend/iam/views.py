@@ -326,7 +326,7 @@ class PasswordResetView(views.APIView):
                     )
                     associated_user.mailing(
                         email_template_name="registration/password_reset_email.html",
-                        subject=_("CISO Assistant: Password Reset"),
+                        subject=_("AdhereOne: Password Reset"),
                     )
                     logger.info(
                         "Password reset email request processed", recipient=email

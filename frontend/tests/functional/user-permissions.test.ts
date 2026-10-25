@@ -76,7 +76,7 @@ Object.entries(userGroups).forEach(([userGroup, userGroupData]) => {
 				await setLoginPage.confirmPasswordInput.fill(vars.user.password);
 			}
 			const passwordSetToast = setLoginPage.isToastVisible(
-				'Your password has been successfully set. Welcome to CISO Assistant!',
+				'Your password has been successfully set. Welcome to AdhereOne!',
 				undefined,
 				{ optional: true }
 			);

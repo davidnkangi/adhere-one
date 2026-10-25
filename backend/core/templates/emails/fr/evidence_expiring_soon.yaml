@@ -1,4 +1,4 @@
-subject: "CISO Assistant: Preuve expirant dans ${days_remaining} jour(s)"
+subject: "AdhereOne: Preuve expirant dans ${days_remaining} jour(s)"
 body: |
   Bonjour,
 
@@ -6,6 +6,6 @@ body: |
 
   ${evidence_list}
 
-  Veuillez vous connecter à votre portail CISO Assistant pour réviser et mettre à jour ces preuves : [Accéder à CISO Assistant](${ciso_assistant_url})
+  Veuillez vous connecter à votre portail AdhereOne pour réviser et mettre à jour ces preuves : [Accéder à AdhereOne](${ciso_assistant_url})
 
   Merci.

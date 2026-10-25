@@ -908,7 +908,7 @@ class UserManager(BaseUserManager):
             try:
                 user.mailing(
                     email_template_name=template_name,
-                    subject=_("Welcome to CISO Assistant!"),
+                    subject=_("Welcome to AdhereOne!"),
                 )
             except Exception as exception:
                 print(f"sending email to {email} failed")

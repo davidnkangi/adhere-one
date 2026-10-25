@@ -220,7 +220,7 @@ def test_test_endpoint_sends_to_the_requester_and_issues_a_token(
     assert body["test_token"]
     assert mail.outbox[0].to == ["admin@tests.local"]
     assert mail.outbox[0].from_email == "hello@example.com"
-    assert "CISO Assistant test email" == mail.outbox[0].subject
+    assert "AdhereOne test email" == mail.outbox[0].subject
     # Nothing was saved by the test.
     assert MailerConfiguration.get().mailers.count() == 0
 

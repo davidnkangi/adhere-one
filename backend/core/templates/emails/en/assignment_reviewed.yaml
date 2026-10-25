@@ -1,4 +1,4 @@
-subject: "CISO Assistant: Your assignment on '${assessment_name}' has been ${decision}"
+subject: "AdhereOne: Your assignment on '${assessment_name}' has been ${decision}"
 body: |
   Hello,
 
@@ -8,6 +8,6 @@ body: |
   - Decision: ${decision}
   ${reviewer_observation}
 
-  Please log in to your CISO Assistant portal for more details: [Go to CISO Assistant](${ciso_assistant_url}/auditee-dashboard)
+  Please log in to your AdhereOne portal for more details: [Go to AdhereOne](${ciso_assistant_url}/auditee-dashboard)
 
   Thank you.

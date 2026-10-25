@@ -1,21 +1,21 @@
-subject: "Welcome to CISO Assistant!"
+subject: "Welcome to AdhereOne!"
 body: |
-  <img src="https://intuitem.com/ciso-assistant.png" alt="CISO Assistant" width="200">
+  <img src="${ciso_assistant_url}/adhereone-logo.png" alt="AdhereOne" width="200">
 
-  ## Welcome to CISO Assistant!
+  ## Welcome to AdhereOne!
 
   **Your all-in-one GRC Management Platform**
 
-  You have been granted access to CISO Assistant. To get started, connect using the link below and use SSO login:
+  You have been granted access to AdhereOne. To get started, connect using the link below and use SSO login:
 
-  [Connect to CISO Assistant](${ciso_assistant_url})
+  [Connect to AdhereOne](${ciso_assistant_url})
 
   If you have trouble with the link, copy and paste the following URL in your browser:
   ${ciso_assistant_url}
 
   If you, or your organization, did not make this request, you can simply ignore this email.
 
-  Learn more about CISO Assistant [here](https://intuitem.com/).
+  Learn more about AdhereOne [here](https://www.consultadhere.com/).
 
   Sincerely,
-  CISO Assistant Team
+  AdhereOne Team

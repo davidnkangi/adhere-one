@@ -1,4 +1,4 @@
-subject: "CISO Assistant: Überfällige Aufgaben (${task_count})"
+subject: "AdhereOne: Überfällige Aufgaben (${task_count})"
 body: |
   Hallo,
 
@@ -6,6 +6,6 @@ body: |
 
   ${task_list}
 
-  Melden Sie sich in Ihrem CISO-Assistant-Portal an, um diese Aufgaben abzuschließen oder zu aktualisieren: [CISO Assistant öffnen](${ciso_assistant_url})
+  Melden Sie sich in Ihrem AdhereOne-Portal an, um diese Aufgaben abzuschließen oder zu aktualisieren: [AdhereOne öffnen](${ciso_assistant_url})
 
   Vielen Dank.

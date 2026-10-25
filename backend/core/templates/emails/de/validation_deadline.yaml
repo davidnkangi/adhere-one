@@ -1,4 +1,4 @@
-subject: "CISO Assistant: Freigabefrist in ${days} ${days_unit}"
+subject: "AdhereOne: Freigabefrist in ${days} ${days_unit}"
 body: |
   Hallo,
 
@@ -6,6 +6,6 @@ body: |
 
   ${validation_list}
 
-  Bitte prüfen und bearbeiten Sie die Anträge vor Ablauf der Frist: [CISO Assistant öffnen](${ciso_assistant_url})
+  Bitte prüfen und bearbeiten Sie die Anträge vor Ablauf der Frist: [AdhereOne öffnen](${ciso_assistant_url})
 
   Vielen Dank.

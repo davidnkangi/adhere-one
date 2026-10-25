@@ -1,6 +1,6 @@
-subject: "CISO Assistant: Ihnen wurde ein Fragebogen zugewiesen"
+subject: "AdhereOne: Ihnen wurde ein Fragebogen zugewiesen"
 body: |
-  <img src="https://intuitem.com/ciso-assistant.png" alt="CISO Assistant" width="200">
+  <img src="${ciso_assistant_url}/adhereone-logo.png" alt="AdhereOne" width="200">
 
   **Ihre zentrale GRC-Managementplattform**
 
@@ -14,4 +14,4 @@ body: |
   ${questionnaire_url}
 
   Freundliche Grüße
-  Ihr CISO-Assistant-Team
+  Ihr AdhereOne-Team

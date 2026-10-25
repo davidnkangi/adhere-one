@@ -142,6 +142,15 @@
 							class="unstyled cursor-pointer flex items-center gap-2 w-full px-4 py-2.5 text-left text-sm hover:bg-surface-200-800 disabled:text-surface-400-600 text-surface-950-50"
 							data-testid="docs-button"><i class="fa-solid fa-book mr-2"></i>{m.onlineDocs()}</a
 						>
+						<!-- AGPL-3.0 section 13: offer the corresponding source to every network user. -->
+						<a
+							href="https://github.com/davidnkangi/adhere-one"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="unstyled cursor-pointer flex items-center gap-2 w-full px-4 py-2.5 text-left text-sm hover:bg-surface-200-800 text-surface-950-50"
+							data-testid="source-code-button"
+							><i class="fa-solid fa-code mr-2"></i>Source code (AGPL-3.0)</a
+						>
 						<form action="/logout" method="POST" onsubmit={() => breadcrumbs.clear()}>
 							<button class="w-full" type="submit" data-testid="logout-button">
 								<span

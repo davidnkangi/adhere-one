@@ -1,3 +1,7 @@
-FROM caddy:2.11.4
+# The official caddy image gives /usr/bin/caddy a file capability (bind to low ports) that Render's
+# container sandbox rejects ("exec /usr/bin/caddy: operation not permitted"). Copying the binary into
+# a plain base image drops that capability; we listen on $PORT (>1024), so it is not needed.
+FROM alpine:3.22
+COPY --from=caddy:2.11.4 /usr/bin/caddy /usr/local/bin/caddy
 COPY render/Caddyfile /etc/caddy/Caddyfile
 CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
